@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
 import User from "./services/User";
@@ -23,13 +23,9 @@ function App() {
 
   const logOut = () => {
     User.logout();
-    setTimeout(() => {
-      window.location.reload()
-    }, 500) 
   };
 
   return (
-    <Router>
       <div>
         <nav className="navbar is-dark">
           <div className="navbar-brand">
@@ -89,7 +85,6 @@ function App() {
         </Switch>
 
       </div>
-    </Router>
   );
 }
 

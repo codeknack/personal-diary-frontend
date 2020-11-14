@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import User from "../services/User";
 import server from "../services/Server"
 
@@ -23,11 +23,13 @@ const Note = ({ note }) => {
   const user = User.getCurrentUser();
   const username = user.username;
 
+  const history = useHistory();
+
   const deleteNote = (id) => {
     server
       .delete(`/${username}/remove/${id}`)
       .then(() => {
-        window.location.reload();
+        history.push(`/${username}/notes`)
       })
   };
 

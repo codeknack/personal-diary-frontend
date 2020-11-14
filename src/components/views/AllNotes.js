@@ -10,17 +10,18 @@ const AllNotes = () => {
 
   const user = User.getCurrentUser();
   const username = user.username;
+  const token = User.getUserToken();
 
   useEffect(() => {
     server
-      .get(`/${username}/notes`)
+      .get(`/${username}/notes`, {headers: token})
       .then(response => {
         setNotes(response.data);
         if (!response.data.length) {
           setMessage(true);
         }
       })
-  }, [username]);
+  }, []);
 
   return (
     <div className="container mt-3">

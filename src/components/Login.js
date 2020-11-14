@@ -23,7 +23,6 @@ const Login = ({ history }) => {
       .login(username, password)
       .then(() => {
           history.push(`/${username}/notes`);
-          window.location.reload();
         },
         (error) => {
           const resMessage =
